@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/if.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	
+	<h1>Some Memorable Movies</h1>
+	
+	<h3><span class="ital">The Sound of Water</span> (Jacob Pollnow, 2023)</h3>
+	
+	<div class="sideBySide">
+	<img class="filmStill" onClick="onClick_Parasite_img01()" src="images/sow1.png" alt="The Sound of Water">
+	<img class="filmStill" onClick="onClick_Parasite_img02()" src="images/sow2.png" alt="The Sound of Water">
+	<img class="filmStill" onClick="onClick_Parasite_img03()" src="images/sow3.png" alt="The Sound of Water">
+	</div>
+		
+	<p class="filmInfo" id="Parasite_text">Lorem ipsum dolor sit amet, con.sectetur adipisicing elit. Totam voluptate mollitia eum consequuntur, doloribus quo hic, ex temporibus unde eligendi nam. Quam, magnam suscipit veniam alias nulla numquam, dolor aliquid ullam atque explicabo quas aliquam animi quod possimus voluptatibus nesciunt architecto odit, fuga sequi assumenda sint dignissimos. Nobis, odit similique.</p>
+	
+	<button type = "button" onClick="gotoMovie()" id="gotoMovie_btn">Watch The Sound of Water</button>
+	
+</body>
+	<script>
+		
+		var gotoMovie_btn = document.getElementById("gotoMovie_btn");
+		gotoMovie_btn.style.visibility = "hidden";
+		
+		var img01_clicked = false;
+		var img02_clicked = false;
+		var img03_clicked = false;
+		
+		var Parasite_text = document.getElementById("Parasite_text");
+		
+		var Parasite00 = "The Sound of Water is a documentary short film I made in Film Production: Non-Fiction last semester. It is a film about my fiancee and their experience growing up on the shore of the Milwaukee River. Their memories of the river, the meaning it holds for them, and the loss they experienced there.";
+		
+		var Parasite01 = "The landscape style poster for my documentary short film The Sound of Water. I asked my fiancee, who is a graphic designer, to create a poster for it so I could submit it to film festivals. The design of the poster she chose matches the themes of the film in two main ways: the water of the Milwaukee River is visible in the headset on the poster, and a sine wave runs across the image."
+		
+		var Parasite02 = "A still of the shore of the Milwaukee River from my short film The Sound of Water. This is one of my favorite shots from the film. This shot is actually of an island in the middle of the river. I captured this shot by reaching my camera over the edge of a bridge."
+		
+		var Parasite03 = "A still taken from The Sound of Water of the house my fiance grew up in. The house is located on the shore of the Milwaukee River and holds a lot of meaning and memories for her. It is a pivotal location in the film and the whole film is built around her memories of living there."
+		
+		Parasite_text.innerHTML = Parasite00;
+		
+		function onClick_Parasite_img01() {
+			Parasite_text.innerHTML = Parasite01;
+			img01_clicked = true;
+			console.log("img01_clicked = " + img01_clicked);
+			revealButton();
+		}
+		
+		function onClick_Parasite_img02() {
+			Parasite_text.innerHTML = Parasite02;
+			img02_clicked = true;
+			console.log("img02_clicked = " + img02_clicked);
+			revealButton();
+		}
+		
+		function onClick_Parasite_img03() {
+			Parasite_text.innerHTML = Parasite03;
+			img03_clicked = true;
+			console.log("img03_clicked = " + img03_clicked);
+			revealButton();
+		}
+		
+		function revealButton(){
+			if (img01_clicked && img02_clicked && img03_clicked){
+				console.log("REVEAL BUTTON");
+				gotoMovie_btn.style.visibility = "visible";
+			}
+		}
+		
+		function gotoMovie(){
+			window.open("https://vimeo.com/825581068", "_blank")
+		}
+		
+	</script>
+</html>
