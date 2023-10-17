@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/random.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="sideBySide">
+	<img class="filmStill" id="leftImage" onclick="randomizer(event)" src="images/p1.jpg" alt="Parasite">
+	<img class="filmStill" id="middleImage" onclick="randomizer(event)" src="images/p2.jpg" alt="Parasite">
+	<img class="filmStill" id="rightImage" onclick="randomizer(event)" src="images/p3.jpg" alt="Parasite">
+	</div>
+</body>
+	
+<script>
+	
+//ELEMENTS THAT CAN CHANGE
+	
+	var leftImage = document.getElementById("leftImage");
+	var middleImage = document.getElementById("middleImage");
+	var rightImage = document.getElementById("rightImage");
+	
+//LIST OF IMAGES IN THE IMAGES FOLDER
+	
+	var g1 = "images/g1.jpg";
+	var g3 = "images/g3.jpg";
+	var p1 = "images/p1.jpg";
+	var p2 = "images/p2.jpg";
+	var p3 = "images/p3.jpg";
+	
+	function randomizer(event){
+		var x = Math.floor(Math.random() * 5) + 1;
+	//	console.log("var x = " + x)
+		console.log(event.currentTarget.id);
+		if (x==1){
+			event.currentTarget.src = g1;
+		}
+		
+		if (x==2){
+			event.currentTarget.src = g3;
+		}
+		
+		if (x==3){
+			event.currentTarget.src = p1;
+		}
+		
+		if (x==4){
+			event.currentTarget.src = p2;
+		}
+		
+		if (x==5){
+			event.currentTarget.src = p3;
+		}
+	}
+</script>
+	
+</html>
