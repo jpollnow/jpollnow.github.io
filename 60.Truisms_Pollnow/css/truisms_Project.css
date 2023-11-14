@@ -1,0 +1,28 @@
+@charset "utf-8";
+#vid {
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+#truism {
+    color: #000000;
+    font-style: italic;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	text-shadow: 2px 2px 5px;
+	border-width: thick;
+	border-style: double;
+	margin-left: 30%;
+	margin-right: 30%;
+	background-color: #FFFFFF;
+	cursor: default;
+}
+
+.centered_text {
+	position: relative;
+	text-align: center;
+	justify-content: center;
+	margin-top: 50vh;
+}

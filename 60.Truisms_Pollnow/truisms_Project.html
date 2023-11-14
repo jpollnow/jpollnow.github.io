@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/truisms_Project.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div>
+      <video id="vid" muted="muted" autoplay="autoplay" loop="loop" >
+        <source src="video/TruismProject1.mp4" type="video/mp4">
+      </video>
+    </div>
+	<div class="centered_text">
+		<h1 id="truism" onmouseover="onTruismText()" onmouseout="outTruismText()" onClick="changeVideo()">The Mundane is to be Cherished</h1>
+	</div>
+</body>
+<script>
+	
+	var channel = 1;
+	var pausedAt = 0;
+	
+	// reference to video element
+	
+	var vid = document.getElementById("vid");
+	
+	//references to the videos
+	
+	var emptyRoom = "video/TruismProject1.mp4";
+	var driving = "video/TruismProject2.mp4";
+	
+	// stuff for sound
+	
+	var mySound = new Audio("sound/rainAndCars.mp3");
+	
+	// functions
+	
+	function onTruismText(){
+		console.log("Clicked on truism text");
+		document.getElementById("vid").style.filter = "blur(10px)";
+	}
+	
+	function outTruismText(){
+		console.log("moving out of truism text");
+		document.getElementById("vid").style.filter = "blur(0px)";
+	}
+	
+	function changeVideo(){
+		console.log("will change video");
+		pausedAt = vid.currentTime;
+		if (channel == 0){
+			vid.src = emptyRoom;
+			vid.currentTime = pausedAt;
+			channel = 1;
+		}
+		else{
+			vid.src = driving;
+			vid.currentTime = pausedAt;
+			channel = 0
+		}
+		
+		mySound.play();
+	}
+</script>
+	
+</html>
