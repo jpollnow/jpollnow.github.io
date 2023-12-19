@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/cyoa.css" rel="stylesheet" type="text/css">
+<link href="../css/cyoa.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onClick="playAudio()">
+	<div class = "video">
+      <video id="vid" preload="auto" controls="controls" autoplay="autoplay" >
+          <source src="../video/Rvp.mp4" type="video/mp4">
+      </video>
+    	<img src="../images/rvp.jpg" id="image" alt=""/>
+	</div>
+	
+	<p id="Pre_Text">You continue walking. The sun shines through the trees creating interesting shadows on the ground.</p>
+	
+	<p id="Post_Text">As you walk you come across a fork in the path. To your left is a rough gravel path, to your right a smooth paved path. Which way should you go?</p>
+	
+	<div class = "Buttons">
+		<button id="LeftButton" onClick="ButtonOne()">Take the rough path</button>
+		<button id="RightButton" onClick="ButtonTwo()">Take the paved path</button>
+	</div>
+	
+	<audio id="forest" autoplay="autoplay" loop="loop" >
+		<source src="../sound/Sound4.mp3" type="audio/mp3">
+	</audio>
+	
+	<script>
+		
+		document.getElementById('vid').addEventListener('ended',whenVideoEnds,false);
+		
+		var LeftButton = document.getElementById("LeftButton");
+		var RightButton = document.getElementById("RightButton"); 
+		var Post_Text = document.getElementById("Post_Text");  
+		var image = document.getElementById("image");
+		var vid = document.getElementById("vid");
+		Post_Text.style.display = 'none';    
+		LeftButton.style.display = 'none';
+		RightButton.style.display = 'none';  
+		image.style.display = 'none';
+		
+		function whenVideoEnds(e) {
+		// these three commands make the caption and the 2 buttons visible
+        Post_Text.style.display = 'block';
+		image.style.display = 'flex';
+		vid.style.display = 'none';
+		setTimeout(function (){
+			LeftButton.style.display = 'inline-block';
+			RightButton.style.display = 'inline-block';
+		}, 3000);
+    }
+		
+	function ButtonOne() {
+    	window.open ('ru.html','_self',false)
+    }
+	function ButtonTwo() {
+    	window.open ('paved.html','_self',false)
+    }
+		
+	function playAudio() {
+		var audio = document.getElementById('forest');
+		audio.play();
+		}
+	</script>
+</body>
+</html>

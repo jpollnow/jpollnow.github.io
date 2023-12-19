@@ -1,0 +1,32 @@
+@charset "utf-8";
+.video {
+	height: auto;
+    margin: 0 auto;
+}
+#vid {
+	width: 100%;
+	max-height: 600px;
+}
+#Pre_Text {
+	text-align: center;
+}
+#Post_Text {
+	text-align: center;
+}
+.Buttons {
+	text-align: center;
+}
+.Buttons button {
+	display: inline-block;
+	margin: 0 auto;
+}
+#image {
+    width: auto;
+    max-height: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+body {
+    background-color: #1E2219;
+    color: #FFFFFF;
+}

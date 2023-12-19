@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/cyoa.css" rel="stylesheet" type="text/css">
+<link href="../css/cyoa.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onClick="playAudio()">
+	<div class = "video">
+      <video id="vid" preload="auto" controls="controls" autoplay="autoplay" >
+          <source src="../video/Right.mp4" type="video/mp4">
+      </video>
+	</div>
+	
+	<p id="Pre_Text">You take the path to the right and continue to explore the mysterious forest.</p>
+	
+	<p id="Post_Text">As you walk you see a deer run across the path. It vanishes quickly but you think you can tell which way it went, do you follow it?</p>
+	
+	<div class = "Buttons">
+		<button id="LeftButton" onClick="ButtonOne()">Continue on</button>
+		<button id="RightButton" onClick="ButtonTwo()">Follow the deer</button>
+	</div>
+	
+	<audio id="forest" autoplay="autoplay" loop="loop" >
+		<source src="../sound/Sound2.mp3" type="audio/mp3">
+	</audio>
+	
+	<script>
+		
+		document.getElementById('vid').addEventListener('ended',whenVideoEnds,false);
+		
+		var LeftButton = document.getElementById("LeftButton");
+		var RightButton = document.getElementById("RightButton"); 
+		var Post_Text = document.getElementById("Post_Text");  
+		var vid = document.getElementById("vid");
+		Post_Text.style.display = 'none';    
+		LeftButton.style.display = 'none';
+		RightButton.style.display = 'none';  
+		
+		function whenVideoEnds(e) {
+		// these three commands make the caption and the 2 buttons visible
+        Post_Text.style.display = 'block';
+		setTimeout(function (){
+			LeftButton.style.display = 'inline-block';
+			RightButton.style.display = 'inline-block';
+		}, 3000);
+    }
+		
+	function ButtonOne() {
+    	window.open ('squirrel.html','_self',false)
+    }
+	function ButtonTwo() {
+    	window.open ('deer.html','_self',false)
+    }
+		
+	function playAudio() {
+		var audio = document.getElementById('forest');
+		audio.play();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="../css/cyoa.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onClick="playAudio()">
+	<div class = "video">
+      <video id="vid" preload="auto" controls="controls" autoplay="autoplay" >
+          <source src="../video/Left1.mp4" type="video/mp4">
+      </video>
+	</div>
+	
+	<p id="Pre_Text">You take the path to the left and continue your journey.</p>
+	
+	<p id="Post_Text">As you walk through the woods you see something in the distance, a glistening lake. It's absolutely beautiful but it's very far away, do you walk towards it?</p>
+	
+	<div class = "Buttons">
+		<button id="LeftButton" onClick="ButtonOne()">Walk towards the lake</button>
+		<button id="RightButton" onClick="ButtonTwo()">Continue on</button>
+	</div>
+	
+	<audio id="forest" autoplay="autoplay" loop="loop" >
+		<source src="../sound/Sound2.mp3" type="audio/mp3">
+	</audio>
+	
+	<script>
+		
+		document.getElementById('vid').addEventListener('ended',whenVideoEnds,false);
+		
+		var lake = 0;
+		var LeftButton = document.getElementById("LeftButton");
+		var RightButton = document.getElementById("RightButton"); 
+		var Post_Text = document.getElementById("Post_Text");  
+		var vid = document.getElementById("vid");
+		var changeRightButton = document.getElementById("RightButton");
+		var changeLeftButton = document.getElementById("LeftButton");
+		var changePreText = document.getElementById("Pre_Text");
+		var changePostText = document.getElementById("Post_Text");
+		Post_Text.style.display = 'none';
+		LeftButton.style.display = 'none';
+		RightButton.style.display = 'none';
+		
+		var left1 = "../video/Left1.mp4";
+		var left2 = "../video/Left2.mp4";
+		var left3 = "../video/Left3.mp4";
+		
+		function whenVideoEnds(e) {
+		// these three commands make the caption and the 2 buttons visible
+        Post_Text.style.display = 'block';
+		setTimeout(function (){
+			LeftButton.style.display = 'inline-block';
+			RightButton.style.display = 'inline-block';
+		}, 3000);
+    }
+		
+	function ButtonOne() {
+    	lake ++;
+		vid.currentTime = 0;
+		Post_Text.style.display = 'none';    
+		LeftButton.style.display = 'none';
+		RightButton.style.display = 'none';  
+		Pre_Text.style.display = 'none';
+		vid.style.display = 'none';
+		changeRightButton.innerHTML = "Turn back";
+		changePreText.innerHTML = "You walk towards the lake";
+		changePostText.innerHTML = "After walking for what feels like hours the lake doesn't seem to be any closer. Do you turn back?";
+		setTimeout(function (){
+			Pre_Text.style.display = 'block';
+			vid.style.display = 'block';
+		}, 250);
+		if (lake > 0){
+			changeLeftButton.innerHTML = "Continue towards the lake";
+			vid.src = left2;
+		}
+		if (lake > 1){
+			changePreText.innerHTML = "You continue towards the lake";
+			vid.src = left3;
+		}
+		if (lake == 3){
+			window.open ('sleep.html','_self',false)
+		}
+    }
+		
+	function ButtonTwo() {
+		if (lake == 0){
+			window.open ('squirrel.html','_self',false)
+		}
+		if (lake > 0){
+			window.open ('left.html','_self',false)
+			lake = 0;
+			vid.src = left1;
+		}
+    }
+	
+	function playAudio() {
+		var audio = document.getElementById('forest');
+		audio.play();
+		}
+	</script>
+</body>
+</html>

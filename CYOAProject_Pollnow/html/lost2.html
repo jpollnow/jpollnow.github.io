@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/cyoa.css" rel="stylesheet" type="text/css">
+<link href="../css/cyoa.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onClick="playAudio()">
+	<div class = "video">
+      <video id="vid" preload="auto" controls="controls" autoplay="autoplay" >
+          <source src="../video/Lost2.mp4" type="video/mp4">
+      </video>
+	</div>
+	
+	<p id="Pre_Text">After walking for a while more you realize you've left the path behind a long time ago, you have no idea where to go.</p>
+	
+	<p id="Post_Text">You wander around for a while until you finally find a path, it looks familiar...</p>
+	
+	<div class = "Buttons">
+		<button id="LeftButton" onClick="ButtonOne()">Walk along the path</button>
+	</div>
+	
+	<audio id="forest" autoplay="autoplay" loop="loop" >
+		<source src="../sound/Sound3.mp3" type="audio/mp3">
+	</audio>
+	
+	<script>
+		
+		document.getElementById('vid').addEventListener('ended',whenVideoEnds,false);
+		
+		var LeftButton = document.getElementById("LeftButton");
+		var Post_Text = document.getElementById("Post_Text");  
+		var vid = document.getElementById("vid");
+		Post_Text.style.display = 'none';    
+		LeftButton.style.display = 'none';
+		
+		function whenVideoEnds(e) {
+		// these three commands make the caption and the 2 buttons visible
+        Post_Text.style.display = 'block';
+		setTimeout(function (){
+			LeftButton.style.display = 'inline-block';
+		}, 3000);
+    }
+		
+	function ButtonOne() {
+    	window.open ('../cyoa.html','_self',false)
+    }
+		
+	function playAudio() {
+		var audio = document.getElementById('forest');
+		audio.play();
+		}
+	</script>
+</body>
+</html>
